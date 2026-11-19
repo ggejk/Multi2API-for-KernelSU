@@ -1,0 +1,7 @@
+# Local configuration may contain API keys.
+/config.json
+# The Android binary is built from pinned upstream source in CI.
+/bin/opencode2api
+/dist/
+/.build/
+__pycache__/

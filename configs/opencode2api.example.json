@@ -1,0 +1,18 @@
+{
+  "listen": "127.0.0.1:3101",
+  "server_keys": [],
+  "zen_keys": [],
+  "go_keys": [],
+  "anonymous": false,
+  "models": {
+    "active_probes": false
+  },
+  "logging": {
+    "level": "info",
+    "dump_request_bodies": false
+  },
+  "webui": {
+    "enabled": false,
+    "listen": "127.0.0.1:3102"
+  }
+}

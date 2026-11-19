@@ -1,0 +1,41 @@
+name: Build Android KernelSU module
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+jobs:
+  android-arm64:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-go@v6
+        with:
+          go-version: '1.24.13'
+          cache: false
+      - name: Test shell lifecycle and ZIP layout
+        run: python3 -m unittest discover -s tests -v
+      - name: Build for Android
+        run: |
+          export ANDROID_NDK_HOME="$ANDROID_HOME/ndk/28.2.13676358"
+          if [ ! -d "$ANDROID_NDK_HOME" ]; then
+            sdkmanager 'ndk;28.2.13676358'
+          fi
+          sh scripts/build-android.sh
+          go version -m dist/opencode2api-android-arm64
+          python3 scripts/package.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Multi2API-KernelSU-android-arm64
+          path: dist/*.zip
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        with:
+          name: opencode2api-source
+          path: dist/*-source.tar.gz
+          if-no-files-found: error

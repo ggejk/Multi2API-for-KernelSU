@@ -1,0 +1,6 @@
+id=Multi2API-for-Kernelsu
+name=Multi2API for KernelSU
+version=v0.1.0
+versionCode=1
+author=Multi2API contributors
+description=Run opencode2api on Android and manage it as a KernelSU service.
