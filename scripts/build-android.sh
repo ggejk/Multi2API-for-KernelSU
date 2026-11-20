@@ -3,8 +3,8 @@
 set -eu
 
 ROOT=$(CDPATH='' cd -- "$(dirname "$0")/.." && pwd)
-REV=e2b2a7c28114d08a28cc5250ae7d4c0a2b16f470
-VERSION=v1.5.0
+REV=6575c623d7fabf43522db48321439eb3fb39c0ed
+VERSION=v1.5.1
 NDK=${ANDROID_NDK_HOME:?Set ANDROID_NDK_HOME to the Android NDK directory (r28 or newer)}
 NDK=$(CDPATH='' cd -- "$NDK" && pwd)
 case "$(uname -s)" in
